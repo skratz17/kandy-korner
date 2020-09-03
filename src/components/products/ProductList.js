@@ -7,6 +7,7 @@ export const ProductList = props => {
 
   useEffect(() => {
     getProducts();
+    document.title = 'Kandy Korner | Products';
   }, []);
 
   return (

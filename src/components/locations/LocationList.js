@@ -7,6 +7,7 @@ export const LocationList = props => {
 
   useEffect(() => {
     getLocations();
+    document.title = 'Kandy Korner | Locations';
   }, [])
 
   return (
