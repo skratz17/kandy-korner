@@ -1,0 +1,17 @@
+.list {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.card {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.card__header {
+  font-weight: bold;
+  text-align: center;
+}
