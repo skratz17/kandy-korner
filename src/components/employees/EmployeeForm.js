@@ -4,6 +4,7 @@ import { EmployeeContext } from './EmployeeProvider';
 import { LocationContext } from '../locations/LocationProvider';
 import { Select } from '../ui/form/Select';
 import { FormErrors } from '../ui/form/FormErrors';
+import './EmployeeForm.css';
 
 export const EmployeeForm = props => {
   const { addEmployee } = useContext(EmployeeContext);
@@ -54,7 +55,7 @@ export const EmployeeForm = props => {
   };
 
   const createEmployee = () => {
-    if(Object.keys(formErrors) === 0) {
+    if(Object.keys(formErrors).length === 0) {
       addEmployee(formValues)
         .then(() => props.history.push('/employees'));
     }
@@ -67,12 +68,13 @@ export const EmployeeForm = props => {
         createEmployee();
       }}
     >
-      <h2 className="employeeForm__header">Add a New Employee</h2>
+      <h2 className="sectionHeader employeeForm__header">Add a New Employee</h2>
 
       <FormGroup>
         <label className="employeeForm__label" htmlFor="name">Employee Name</label>
         <input type="text"
           name="name"
+          className="employeeForm__name"
           id="name"
           value={formValues.name}
           onChange={handleChange}
@@ -81,9 +83,10 @@ export const EmployeeForm = props => {
       </FormGroup>
 
       <FormGroup>
-        <label className="employeeForm__location" htmlFor="location">Location</label>
+        <label className="employeeForm__label" htmlFor="location">Location</label>
         <Select placeholder="Choose a location"
           name="location"
+          className="employeeForm__location"
           id="location"
           displayNameProperty="address"
           items={locations} 
@@ -93,8 +96,9 @@ export const EmployeeForm = props => {
       </FormGroup>
 
       <FormGroup>
-        <label className="employeeForm__isManager" htmlFor="isManager">Is Manager?</label>
+        <label className="employeeForm__label" htmlFor="isManager">Is Manager?</label>
         <input type="checkbox"
+          className="employeeForm__isManager"
           name="isManager"
           id="isManager"
           value={formValues.isManager}
@@ -103,8 +107,9 @@ export const EmployeeForm = props => {
       </FormGroup>
 
       <FormGroup>
-        <label className="employeeForm__isFullTime" htmlFor="isFullTime">Is Full Time?</label>
+        <label className="employeeForm__label" htmlFor="isFullTime">Is Full Time?</label>
         <input type="checkbox"
+          className="employeeForm__isFullTime"
           name="isFullTime"
           id="isFullTime"
           value={formValues.isFullTime}
@@ -113,8 +118,9 @@ export const EmployeeForm = props => {
       </FormGroup>
 
       <FormGroup>
-        <label className="employeeForm__hourlyRate" htmlFor="hourlyRate">Hourly Rate</label>
+        <label className="employeeForm__label" htmlFor="hourlyRate">Hourly Rate</label>
         <input type="number"
+          className="employeeForm__hourlyRate"
           name="hourlyRate"
           id="hourlyRate"
           value={formValues.hourlyRate}
@@ -122,7 +128,7 @@ export const EmployeeForm = props => {
         {touchedValues.hourlyRate && <FormErrors errors={formErrors.hourlyRate} />}
       </FormGroup>
 
-      <button type="submit" className="btn btn--create" disabled={Object.keys(formErrors).length !== 0}>Create Employee</button>
+      <button type="submit" className="btn btn--create createEmployeeButton" disabled={Object.keys(touchedValues).length === 0 || Object.keys(formErrors).length !== 0}>Create Employee</button>
     </form>
   );
 };

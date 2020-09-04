@@ -38,3 +38,9 @@
 .btn--create:hover {
   background-color: #31f500;
 }
+
+.btn:disabled {
+  background-color: #fff;
+  color: grey;
+  cursor: not-allowed;
+}

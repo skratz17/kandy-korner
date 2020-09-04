@@ -1,0 +1,12 @@
+.employeeForm__label {
+  display: inline-block;
+  width: 150px;
+}
+
+.employeeForm__name {
+  width: 350px;
+}
+
+.createEmployeeButton {
+  margin: 1rem;
+}
