@@ -11,8 +11,11 @@ export const LocationList = props => {
   }, [])
 
   return (
-    <section className="list locations">
-      { locations.map(l => <Location key={l.id} location={l} />) }
-    </section>
+    <div className="locationsContainer">
+      <h2 className="sectionHeader locationsHeader">Locations</h2>
+      <section className="list locations">
+        { locations.map(l => <Location key={l.id} location={l} />) }
+      </section>
+    </div>
   );
 };

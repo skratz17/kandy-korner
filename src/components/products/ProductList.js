@@ -11,8 +11,11 @@ export const ProductList = props => {
   }, []);
 
   return (
-    <section className="list products">
-      { products.map(p => <Product key={p.id} product={p} />) }
-    </section>
+    <div className="productsContainer">
+      <h2 className="sectionHeader productsHeader">Products</h2>
+      <section className="list products">
+        { products.map(p => <Product key={p.id} product={p} />) }
+      </section>
+    </div>
   );
 };
