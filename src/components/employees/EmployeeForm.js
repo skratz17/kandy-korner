@@ -50,14 +50,14 @@ export const EmployeeForm = props => {
     if(isNaN(parseInt(hourlyRate))) errors.hourlyRate = 'Hourly rate must be a number.';
     else if(parseInt(hourlyRate) < 8) errors.hourlyRate = 'Value must be above minimum wage (which I am pretending is anything below $8/hr).';
 
-    debugger;
-
     setFormErrors(errors);
   };
 
   const createEmployee = () => {
-    addEmployee(formValues)
-      .then(() => props.history.push('/employees'));
+    if(Object.keys(formErrors) === 0) {
+      addEmployee(formValues)
+        .then(() => props.history.push('/employees'));
+    }
   }
 
   return (
