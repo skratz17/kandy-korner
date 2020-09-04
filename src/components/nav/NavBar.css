@@ -1,0 +1,22 @@
+.navbar__links {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar__link {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: #00f;
+  transition: all 0.35s;
+}
+
+.navbar__link:hover {
+  color: #2dbd09;
+}
+
+.navbar__link.current {
+  font-weight: bold;
+  color: #2dbd09;
+  text-decoration: underline;
+}
