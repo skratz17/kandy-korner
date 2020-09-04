@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { LocationProvider } from './locations/LocationProvider';
-import { ProductProvider } from './products/ProductProvider';
 import { Home } from './home/Home';
+import { LocationProvider } from './locations/LocationProvider';
 import { LocationList } from './locations/LocationList';
+import { ProductProvider } from './products/ProductProvider';
 import { ProductList } from './products/ProductList';
+import { EmployeeProvider } from './employees/EmployeeProvider';
+import { EmployeeList } from './employees/EmployeeList';
 
 export const ApplicationViews = () => (
   <>
@@ -24,5 +26,11 @@ export const ApplicationViews = () => (
         <ProductList />
       </Route>
     </ProductProvider>
+
+    <EmployeeProvider>
+      <Route path="/employees">
+        <EmployeeList />
+      </Route>
+    </EmployeeProvider>
   </>
 );
