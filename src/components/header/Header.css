@@ -1,0 +1,18 @@
+.header {
+  padding: 1rem;
+  text-align: center;
+}
+
+.header__text {
+  margin: 0 auto;
+  font-size: 3rem;
+  max-width: 400px;
+  background: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header__slogan {
+  font-style: italic;
+}

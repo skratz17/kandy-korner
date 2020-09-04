@@ -1,0 +1,46 @@
+.sectionHeader {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.list {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.card {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.card__header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn {
+  padding: 1rem 0.5rem;;
+  border: 1px solid #0003;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.btn--create {
+  background-color: #2be705;
+}
+
+.btn--create:hover {
+  background-color: #31f500;
+}
+
+.btn:disabled {
+  background-color: #fff;
+  color: grey;
+  cursor: not-allowed;
+}
