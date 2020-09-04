@@ -25,8 +25,20 @@ export const EmployeeForm = props => {
     }));
   };
 
+  const createEmployee = e => {
+    e.preventDefault();
+
+    if(formValues.name && formValues.location && formValues.hourlyRate) {
+      addEmployee(formValues)
+        .then(() => props.history.push('/employees'));
+    }
+    else {
+      alert('ahhhhh')
+    }
+  }
+
   return (
-    <form className="employeeForm">
+    <form onSubmit={createEmployee} className="employeeForm">
       <h2 className="employeeForm__header">Add a New Employee</h2>
 
       <FormGroup>
@@ -76,6 +88,8 @@ export const EmployeeForm = props => {
           value={formValues.hourlyRate || ''}
           onChange={handleChange} />
       </FormGroup>
+
+      <button type="submit" className="btn btn--create">Create Employee</button>
     </form>
   );
 };
