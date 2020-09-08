@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import { Home } from './home/Home';
 import { LocationProvider } from './locations/LocationProvider';
@@ -15,6 +15,11 @@ export const ApplicationViews = () => (
     <Route exact path="/">
       <Home />
     </Route>
+
+    <Route path="/logout" render={() => {
+      localStorage.removeItem('kandy_customer');
+      return <Redirect to="/login" />;
+    }} />
 
     <LocationProvider>
       <Route path="/locations">
