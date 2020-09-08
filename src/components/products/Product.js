@@ -11,9 +11,11 @@ export const Product = ({ product }) => {
   const [ isSubmitSuccess, setIsSubmitSuccess ] = useState(false);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => setIsSubmitSuccess(false), 1500);
+    if(isSubmitSuccess) {
+      const timeoutId = setTimeout(() => setIsSubmitSuccess(false), 1500);
 
-    return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
+    }
   }, [ isSubmitSuccess ]);
 
   const handleAddToOrderClick = id => {
