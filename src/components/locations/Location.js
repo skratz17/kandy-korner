@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Location = ({ location }) => {
-  const { name, address, squareFootage, isHandicapAccessible } = location;
+  const { address, squareFootage, isHandicapAccessible } = location;
 
   return (
     <article className="card location">
