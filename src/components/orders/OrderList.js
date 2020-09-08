@@ -15,9 +15,8 @@ export const OrderList = props => {
 
   const productsOrderedCounts = orders
     .filter(o => o.customerId === parseInt(localStorage.getItem('kandy_customer')))
-    .map(o => products.find(p => p.id === o.productId) || {})
-    .reduce((counts, product) => {
-      counts[product.id] = counts[product.id] ? counts[product.id] + 1 : 1
+    .reduce((counts, order) => {
+      counts[order.productId] = counts[order.productId] ? counts[order.productId] + 1 : 1
       return counts;
     }, {});
 
