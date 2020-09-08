@@ -10,7 +10,7 @@ import { Register } from './auth/Register';
 
 export const KandyKorner = props => (
   <>
-    <Route exact path="/" render={props => {
+    <Route path="/" render={props => {
       if(localStorage.getItem('kandy_customer')) {
         return (
           <>
