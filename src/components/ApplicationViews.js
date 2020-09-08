@@ -10,6 +10,7 @@ import { EmployeeProvider } from './employees/EmployeeProvider';
 import { EmployeeList } from './employees/EmployeeList';
 import { EmployeeForm } from './employees/EmployeeForm';
 import { OrderProvider } from './orders/OrderProvider';
+import { OrderList } from './orders/OrderList';
 
 export const ApplicationViews = () => (
   <>
@@ -32,6 +33,10 @@ export const ApplicationViews = () => (
       <OrderProvider>
         <Route path="/products">
           <ProductList />
+        </Route>
+
+        <Route path="/orders">
+          <OrderList />
         </Route>
       </OrderProvider>
     </ProductProvider>
