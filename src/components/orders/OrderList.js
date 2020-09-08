@@ -43,7 +43,7 @@ export const OrderList = props => {
     <>
       <h2 className="sectionHeader">My Order</h2>
       <div className="orderListWrapper">
-        <Table config={tableConfig} items={collapsedProductsOrdered} />
+        { orders.length !== 0 && products.length !== 0 && <Table config={tableConfig} items={collapsedProductsOrdered} /> }
       </div>
     </>
   );
