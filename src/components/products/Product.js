@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { OrderContext } from '../orders/OrderProvider';
 import './Product.css';
@@ -10,13 +10,18 @@ export const Product = ({ product }) => {
   const [ isSubmitting, setIsSubmitting ] = useState(false);
   const [ isSubmitSuccess, setIsSubmitSuccess ] = useState(false);
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setIsSubmitSuccess(false), 1500);
+
+    return () => clearTimeout(timeoutId);
+  }, [ isSubmitSuccess ]);
+
   const handleAddToOrderClick = id => {
     setIsSubmitting(true);
     addOrder(id)
       .then(() => {
         setIsSubmitting(false);
         setIsSubmitSuccess(true);
-        setTimeout(() => setIsSubmitSuccess(false), 1500);
       });
   }
 
