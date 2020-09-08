@@ -9,6 +9,7 @@ import { ProductList } from './products/ProductList';
 import { EmployeeProvider } from './employees/EmployeeProvider';
 import { EmployeeList } from './employees/EmployeeList';
 import { EmployeeForm } from './employees/EmployeeForm';
+import { OrderProvider } from './orders/OrderProvider';
 
 export const ApplicationViews = () => (
   <>
@@ -28,9 +29,11 @@ export const ApplicationViews = () => (
     </LocationProvider>
 
     <ProductProvider>
-      <Route path="/products">
-        <ProductList />
-      </Route>
+      <OrderProvider>
+        <Route path="/products">
+          <ProductList />
+        </Route>
+      </OrderProvider>
     </ProductProvider>
 
     <EmployeeProvider>
