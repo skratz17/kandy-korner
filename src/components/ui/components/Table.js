@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Table.css';
+
 export const Table = ({ config, items }) => {
   return (
     <table className="table">
@@ -10,7 +12,7 @@ export const Table = ({ config, items }) => {
       </thead>
       <tbody className="tableBody">
         { items.map(i => (
-          <tr>{config.map(c => <td className="table__cell tableBody__cell">{i[c.field]}</td>)}</tr>
+          <tr className="table__row tableBody__row">{config.map(c => <td className="table__cell tableBody__cell">{i[c.field]}</td>)}</tr>
         ))}
       </tbody>
     </table>

@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { OrderContext } from './OrderProvider.js';
 import { ProductContext } from '../products/ProductProvider';
 import { Table } from '../ui/components/Table';
+import './OrderList.css';
 
 export const OrderList = props => {
   const { orders, getOrders } = useContext(OrderContext);
@@ -39,8 +40,11 @@ export const OrderList = props => {
   ];
 
   return (
-    <div className="orderListWrapper">
-      <Table config={tableConfig} items={collapsedProductsOrdered} />
-    </div>
+    <>
+      <h2 className="sectionHeader">My Order</h2>
+      <div className="orderListWrapper">
+        <Table config={tableConfig} items={collapsedProductsOrdered} />
+      </div>
+    </>
   );
 };
