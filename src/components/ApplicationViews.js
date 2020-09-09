@@ -44,9 +44,11 @@ export const ApplicationViews = () => (
     </ProductProvider>
 
     <CustomerProvider>
-      <Route path="/customers">
-        <CustomerList />
-      </Route>
+      <OrderProvider>
+        <Route path="/customers">
+          <CustomerList />
+        </Route>
+      </OrderProvider>
     </CustomerProvider>
 
     <EmployeeProvider>
