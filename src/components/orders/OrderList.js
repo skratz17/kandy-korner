@@ -29,18 +29,20 @@ export const OrderList = props => {
   }, [ orders ]);
 
   useEffect(() => {
-    const _collapsedProductsOrdered = Object.keys(productsOrderedCounts)
-      .map(id => {
-        const product = products.find(p => p.id === parseInt(id)) || {};
+    if(Object.keys(productsOrderedCounts) && products.length) {  
+      const _collapsedProductsOrdered = Object.keys(productsOrderedCounts)
+        .map(id => {
+          const product = products.find(p => p.id === parseInt(id)) || {};
 
-        return { 
-          ...product,
-          count: productsOrderedCounts[id],
-          totalPrice: product.price * productsOrderedCounts[id] 
-        };
-      });
+          return { 
+            ...product,
+            count: productsOrderedCounts[id],
+            totalPrice: product.price * productsOrderedCounts[id] 
+          };
+        });
 
-    setCollapsedProductsOrdered(_collapsedProductsOrdered);
+      setCollapsedProductsOrdered(_collapsedProductsOrdered);
+    }
   }, [ productsOrderedCounts, products ]);
 
   const tableConfig = [
@@ -54,7 +56,7 @@ export const OrderList = props => {
     <>
       <h2 className="sectionHeader">My Order</h2>
       <div className="orderListWrapper">
-        { orders.length !== 0 && products.length !== 0 && <Table config={tableConfig} items={collapsedProductsOrdered} /> }
+        <Table config={tableConfig} items={collapsedProductsOrdered} />
       </div>
     </>
   );
