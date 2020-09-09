@@ -13,8 +13,8 @@ export const OrderList = props => {
   const [ collapsedProductsOrdered, setCollapsedProductsOrdered ] = useState([]);
 
   useEffect(() => {
-    getOrders()
-      .then(getProducts);
+    getOrders();
+    getProducts();
   }, []);
 
   useEffect(() => {
