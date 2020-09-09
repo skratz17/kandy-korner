@@ -29,6 +29,9 @@ export const NavBar = () => {
           <Link className={getClassName('/employees')} to="/employees">Employees</Link>
         </li>
         <li className="navbar__linkWrapper">
+          <Link className={getClassName('/customers')} to="/customers">Customers</Link>
+        </li>
+        <li className="navbar__linkWrapper">
           <Link className={getClassName('/orders')} to="/orders">My Order</Link>
         </li>
         <li className="navbar__linkWrapper">
