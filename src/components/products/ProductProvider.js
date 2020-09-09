@@ -12,6 +12,11 @@ export const ProductProvider = props => {
       .then(setProducts);
   };
 
+  const getProductById = id => {
+    return fetch(`http://localhost:8088/products/${id}?_expand=productType`)
+      .then(res => res.json());
+  };
+
   const addProduct = product => {
     return fetch('http://localhost:8088/products', {
       method: 'POST',
@@ -25,7 +30,7 @@ export const ProductProvider = props => {
 
   return (
     <ProductContext.Provider value={{
-      products, getProducts, addProduct, searchTerm, setSearchTerm
+      products, getProducts, getProductById, addProduct, searchTerm, setSearchTerm
     }}>
       {props.children}
     </ProductContext.Provider>

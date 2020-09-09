@@ -36,7 +36,11 @@ export const Product = ({ product }) => {
         <div className="card__content product__addToOrderWrapper">
           <button 
             className="product__addToOrder btn btn--create" 
-            onClick={() => handleAddToOrderClick(id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              handleAddToOrderClick(id)
+            }}
             disabled={isSubmitting || isSubmitSuccess}
           >
               {isSubmitSuccess ? 'Added to Order!' : 'Add to Order'}
