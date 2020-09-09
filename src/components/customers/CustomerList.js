@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CustomerContext } from './CustomerProvider';
 import { Table } from '../ui/components/Table';
 import { OrderContext } from '../orders/OrderProvider';
+import './CustomerList.css';
 
 export const CustomerList = props => {
   const { customers, getCustomers } = useContext(CustomerContext);
@@ -35,7 +36,9 @@ export const CustomerList = props => {
   return (
     <div className="customersContainer">
       <h2 className="sectionHeader customersHeader">Customers</h2>
-      <Table config={tableConfig} items={customersWithCandyCounts} />
+      <div className="customerListWrapper">
+        <Table config={tableConfig} items={customersWithCandyCounts} />
+      </div>
     </div>
   );
 };
