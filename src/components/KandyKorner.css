@@ -16,6 +16,15 @@
   padding: 1rem;
 }
 
+.cardLink {
+  text-decoration: none;
+  color: #000;
+}
+
+.cardLink .card:hover {
+  background-color: #eee;
+}
+
 .card__header {
   font-weight: bold;
   text-align: center;

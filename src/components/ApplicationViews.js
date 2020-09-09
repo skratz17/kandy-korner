@@ -14,6 +14,7 @@ import { OrderList } from './orders/OrderList';
 import { CustomerProvider } from './customers/CustomerProvider';
 import { CustomerList } from './customers/CustomerList';
 import { ProductSearch } from './products/ProductSearch';
+import { ProductDetails } from './products/ProductDetails';
 
 export const ApplicationViews = () => (
   <>
@@ -34,12 +35,16 @@ export const ApplicationViews = () => (
 
     <ProductProvider>
       <OrderProvider>
-        <Route path="/products">
+        <Route exact path="/products">
           <>
             <ProductSearch />
             <ProductList />
           </>
         </Route>
+
+        <CustomerProvider>
+          <Route path="/products/:productId(\d+)" component={ProductDetails} />
+        </CustomerProvider>
 
         <Route path="/orders">
           <OrderList />

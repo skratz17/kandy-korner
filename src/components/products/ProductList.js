@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ProductContext } from './ProductProvider';
 import { Product } from './Product';
+import { Link } from 'react-router-dom';
 
 export const ProductList = props => {
   const { products, getProducts, searchTerm } = useContext(ProductContext);
@@ -26,7 +27,12 @@ export const ProductList = props => {
     <div className="productsContainer">
       <h2 className="sectionHeader productsHeader">Products</h2>
       <section className="list products">
-        { filteredProducts.map(p => <Product key={p.id} product={p} />) }
+        { filteredProducts.map(p => (
+            <Link to={`/products/${p.id}`} className="cardLink">
+              <Product key={p.id} product={p} /> 
+            </Link>
+          )
+        )}
       </section>
     </div>
   );
