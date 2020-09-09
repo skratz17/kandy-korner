@@ -39,6 +39,15 @@
   background-color: #31f500;
 }
 
+.btn--delete {
+  background-color: #dd1515;
+  color: #fff;
+}
+
+.btn--delete:hover {
+  background-color: #ee3434;
+}
+
 .btn:disabled {
   background-color: #fff;
   color: grey;
