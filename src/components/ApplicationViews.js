@@ -13,6 +13,7 @@ import { OrderProvider } from './orders/OrderProvider';
 import { OrderList } from './orders/OrderList';
 import { CustomerProvider } from './customers/CustomerProvider';
 import { CustomerList } from './customers/CustomerList';
+import { ProductSearch } from './products/ProductSearch';
 
 export const ApplicationViews = () => (
   <>
@@ -34,7 +35,10 @@ export const ApplicationViews = () => (
     <ProductProvider>
       <OrderProvider>
         <Route path="/products">
-          <ProductList />
+          <>
+            <ProductSearch />
+            <ProductList />
+          </>
         </Route>
 
         <Route path="/orders">
