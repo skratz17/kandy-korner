@@ -34,8 +34,8 @@ export const CustomerList = props => {
 
   return (
     <div className="customersContainer">
-    <h2 className="sectionHeader customersHeader">Customers</h2>
-    <Table config={tableConfig} items={customersWithCandyCounts} />
-  </div>
+      <h2 className="sectionHeader customersHeader">Customers</h2>
+      <Table config={tableConfig} items={customersWithCandyCounts} />
+    </div>
   );
 };

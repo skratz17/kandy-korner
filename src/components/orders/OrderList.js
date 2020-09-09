@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { OrderContext } from './OrderProvider.js';
 import { ProductContext } from '../products/ProductProvider';
@@ -9,28 +9,39 @@ export const OrderList = props => {
   const { orders, getOrders } = useContext(OrderContext);
   const { products, getProducts } = useContext(ProductContext);
 
+  const [ productsOrderedCounts, setProductsOrderedCounts ] = useState({});
+  const [ collapsedProductsOrdered, setCollapsedProductsOrdered ] = useState([]);
+
   useEffect(() => {
-    getOrders();
-    getProducts();
+    getOrders()
+      .then(getProducts);
   }, []);
 
-  const productsOrderedCounts = orders
-    .filter(o => o.customerId === parseInt(localStorage.getItem('kandy_customer')))
-    .reduce((counts, order) => {
-      counts[order.productId] = counts[order.productId] ? counts[order.productId] + 1 : 1
-      return counts;
-    }, {});
+  useEffect(() => {
+    const _productsOrderedCounts = orders
+      .filter(o => o.customerId === parseInt(localStorage.getItem('kandy_customer')))
+      .reduce((counts, order) => {
+        counts[order.productId] = counts[order.productId] ? counts[order.productId] + 1 : 1
+        return counts;
+      }, {});
 
-  const collapsedProductsOrdered = Object.keys(productsOrderedCounts)
-    .map(id => {
-      const product = products.find(p => p.id === parseInt(id)) || {};
+    setProductsOrderedCounts(_productsOrderedCounts);
+  }, [ orders ]);
 
-      return { 
-        ...product,
-        count: productsOrderedCounts[id],
-        totalPrice: product.price * productsOrderedCounts[id] 
-      };
-    });
+  useEffect(() => {
+    const _collapsedProductsOrdered = Object.keys(productsOrderedCounts)
+      .map(id => {
+        const product = products.find(p => p.id === parseInt(id)) || {};
+
+        return { 
+          ...product,
+          count: productsOrderedCounts[id],
+          totalPrice: product.price * productsOrderedCounts[id] 
+        };
+      });
+
+    setCollapsedProductsOrdered(_collapsedProductsOrdered);
+  }, [ productsOrderedCounts, products ]);
 
   const tableConfig = [
     { header: 'Candy', field: 'name' },
